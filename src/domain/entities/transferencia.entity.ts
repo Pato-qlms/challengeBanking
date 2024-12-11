@@ -1,10 +1,23 @@
 /* eslint-disable prettier/prettier */
 
+import { IsString, IsNumber, IsDate } from 'class-validator';
+import { Type } from 'class-transformer';
+
 export class TransferenciaEntity {
-    idEmpresa: string; 
-    importe: number; 
-    cuentaDebito: string; 
-    cuentaCredito: string; 
-    fechaTransferencia: Date; 
-  }
+    @IsString()
+    idEmpresa: string;
+
+    @IsNumber()
+    importe: number;
+
+    @IsString()
+    cuentaDebito: string;
+
+    @IsString()
+    cuentaCredito: string;
+
+    @IsDate()
+    @Type(() => Date) 
+    fechaTransferencia: Date;
+}
   

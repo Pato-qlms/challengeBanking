@@ -7,10 +7,10 @@ import { AddEmpresaUseCase } from './application/use-cases/add-empresa.use-case'
 import { GetEmpresasTransferenciasUseCase } from './application/use-cases/get-empresas-transferencias.use-case';
 import { EmpresaRepositoryAdapter } from './infrastructure/adapters/empresa-repository.adapter';
 import { GetEmpresasAdheridasUseCase } from './application/use-cases/get-empresas-adheridas.use-case';
-import { EmpresaRepository } from './domain/repository/empresa.repository';
 import { TransferenciaSchema } from './infrastructure/database/transferencia.schema';
 import { TransferenciaRepositoryAdapter } from './infrastructure/adapters/transferencia-repository.adapter';
 import { TransferenciaRepository } from './domain/repository/transferencia.repository';
+import { EmpresaRepository } from './domain/repository/empresa.repository';
 
 @Module({
   imports: [

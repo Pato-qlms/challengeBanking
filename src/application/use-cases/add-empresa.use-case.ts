@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
-import { EmpresaRepository } from 'src/domain/repository/empresa.repository';
+import { EmpresaRepository } from '../../domain/repository/empresa.repository';
 import { EmpresaEntity } from 'src/domain/entities/empresa.entity';
 
 @Injectable()

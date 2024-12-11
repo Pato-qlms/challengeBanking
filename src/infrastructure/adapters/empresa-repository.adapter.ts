@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
-import { EmpresaRepository } from 'src/domain/repository/empresa.repository';
+import { EmpresaRepository } from '../../domain/repository/empresa.repository';
 import { EmpresaEntity } from '../../domain/entities/empresa.entity';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
@@ -20,31 +20,12 @@ export class EmpresaRepositoryAdapter extends EmpresaRepository {
     return this.model.find({ fechaAdhesion: { $gte: filter.fechaInicio, $lte: filter.fechaFin } });
   }
 
-  async findConTransferencias(): Promise<EmpresaEntity[]> {
-    const ultimoMes = new Date();
-    ultimoMes.setMonth(ultimoMes.getMonth() - 1);
-  
-    const empresas = await this.model.aggregate([
-      {
-        $lookup: {
-          from: 'transferencias', 
-          localField: '_id',      
-          foreignField: 'idEmpresa',
-          as: 'transferencias',
-        },
+  async findConTransferencias(filter: { fechaInicio: Date; fechaFin: Date }): Promise<EmpresaEntity[]> {
+    return this.model.find({
+      fechaTransferencia: {
+        $gte: filter.fechaInicio,
+        $lte: filter.fechaFin,
       },
-      {
-        $match: {
-          'transferencias.fechaTransferencia': { $gte: ultimoMes },
-        },
-      },
-      {
-        $project: {
-          transferencias: 0, 
-        },
-      },
-    ]);
-  
-    return empresas;
+    });
   }
 }

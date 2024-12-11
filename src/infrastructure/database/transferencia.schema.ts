@@ -1,10 +1,23 @@
 /* eslint-disable prettier/prettier */
-import { Schema } from 'mongoose';
 
-export const TransferenciaSchema = new Schema({
-  idEmpresa: { type: String, required: true },
-  importe: { type: Number, required: true },
-  cuentaDebito: { type: String, required: true },
-  cuentaCredito: { type: String, required: true },
-  fechaTransferencia: { type: Date, required: true },
-});
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+
+@Schema()
+export class Transferencia {
+  @Prop({ required: true })
+  idEmpresa: string;
+
+  @Prop({ required: true })
+  importe: string;
+
+  @Prop({ required: true })
+  cuentaDebito: string;
+
+  @Prop({ required: true })
+  cuentaCredito: string;
+
+  @Prop({ required: true })
+  fechaAdhesion: Date;
+}
+
+export const TransferenciaSchema = SchemaFactory.createForClass(Transferencia);

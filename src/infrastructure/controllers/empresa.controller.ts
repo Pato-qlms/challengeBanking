@@ -3,9 +3,9 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AddEmpresaUseCase } from '../../application/use-cases/add-empresa.use-case';
 
 import { GetEmpresasTransferenciasUseCase } from '../../application/use-cases/get-empresas-transferencias.use-case';
-import { CreateEmpresaDTO } from 'src/application/dtos/CreateEmpresaDTO';
+import { CreateEmpresaDTO } from '../../shared/dtos/CreateEmpresaDTO';
 import { ApiOperation } from '@nestjs/swagger';
-import { GetEmpresasAdheridasUseCase } from 'src/application/use-cases/get-empresas-adheridas.use-case';
+import { GetEmpresasAdheridasUseCase } from '../../application/use-cases/get-empresas-adheridas.use-case';
 @Controller('empresas')
 export class EmpresaController {
   constructor(
