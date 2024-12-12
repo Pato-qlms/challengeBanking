@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { TransferenciaRepository } from '../../domain/repository/transferencia.repository';
-import { GetEmpresasTransferenciasUseCase } from './get-empresas-transferencias.use-case';
+import { TransferenciaRepository } from '../src/domain/repository/transferencia.repository';
+import { GetEmpresasTransferenciasUseCase } from '../src/application/use-cases/get-empresas-transferencias.use-case';
 
 describe('GetEmpresasTransferenciasUseCase', () => {
   let useCase: GetEmpresasTransferenciasUseCase;

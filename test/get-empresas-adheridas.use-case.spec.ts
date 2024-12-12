@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { EmpresaRepository } from '../../domain/repository/empresa.repository';
-import { GetEmpresasAdheridasUseCase } from './get-empresas-adheridas.use-case';
+import { EmpresaRepository } from '../src/domain/repository/empresa.repository';
+import { GetEmpresasAdheridasUseCase } from '../src/application/use-cases/get-empresas-adheridas.use-case';
 
 describe('GetEmpresasAdheridasUseCase', () => {
   let useCase: GetEmpresasAdheridasUseCase;

@@ -22,78 +22,87 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+# Challenge Interbanking
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Este proyecto es una aplicación backend desarrollada en NestJS utilizando una arquitectura hexagonal. La aplicación está diseñada para interactuar con MongoDB, gestionando diversas entidades y operaciones a través de controladores, servicios y repositorios, mientras que separa las preocupaciones de infraestructura y lógica de negocio. Se ha dockerizado para facilitar su ejecución en cualquier entorno, utilizando Docker Compose para orquestar los contenedores, lo que permite que la aplicación se ejecute de manera consistente y escalable.
 
-## Project setup
+## Comenzando 🚀
 
-```bash
-$ npm install
-```
+Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas.
 
-## Compile and run the project
+### Pre-requisitos 📋
 
-```bash
-# development
-$ npm run start
+Antes de empezar, asegúrate de tener las siguientes herramientas instaladas:
 
-# watch mode
-$ npm run start:dev
+- **Node.js**: Instalar Node.js desde el sitio web oficial.
+- **Docker**: Instalar Docker siguiendo la documentación de instalación oficial.
+- **Docker Compose**: Instalar Docker Compose desde la documentación oficial.
 
-# production mode
-$ npm run start:prod
-```
+### Instalación 🔧
 
-## Run tests
+#### Sin Docker
 
-```bash
-# unit tests
-$ npm run test
+1. Clona el repositorio y entra en la carpeta del proyecto:
 
-# e2e tests
-$ npm run test:e2e
+    git clone <URL_DEL_REPOSITORIO>
+    cd <NOMBRE_DEL_REPOSITORIO>
 
-# test coverage
-$ npm run test:cov
-```
+2. Instala las dependencias con npm:
 
-## Deployment
+    npm install
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+3. Ejecuta la aplicación en modo de desarrollo:
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+    npm run start:dev
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+   La aplicación debería estar corriendo en `http://localhost:3000`.
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+#### Con Docker
 
-## Resources
+1. Construye y levanta los contenedores con Docker Compose:
 
-Check out a few resources that may come in handy when working with NestJS:
+    docker compose up --build
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+2. Una vez que Docker haya iniciado los contenedores, la aplicación estará corriendo en `http://localhost:3000`. Puedes acceder a ella a través de un navegador o herramientas como Postman.
 
-## Support
+3. Para detener los contenedores, ejecuta:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+    docker compose down
 
-## Stay in touch
+### Acceder a Swagger 📜
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Una vez que la aplicación esté corriendo, puedes acceder a la interfaz de Swagger para ver y probar los endpoints de la API. Solo necesitas abrir un navegador y dirigirte a la siguiente URL:
 
-## License
+    http://localhost:3000/api
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Allí podrás ver una lista de todos los endpoints disponibles, sus descripciones, y podrás interactuar con la API de manera sencilla.
+
+### Ejecutando las pruebas ⚙️
+
+Las pruebas se pueden ejecutar con el siguiente comando:
+
+    npm run test
+
+### Analice las pruebas end-to-end 🔩
+
+Las pruebas end-to-end verifican el flujo completo de la aplicación, asegurando que los controladores, servicios y repositorios interactúan correctamente. Son útiles para garantizar que la aplicación funcione de manera integrada.
+
+Para ejecutarlas, usa el siguiente comando:
+
+    npm run test:e2e
+
+### Y las pruebas de estilo de codificación ⌨️
+
+Las pruebas de estilo de codificación verifican que el código siga las convenciones establecidas, asegurando que el código sea limpio y de fácil mantenimiento. Esto ayuda a mantener un código legible y de fácil mantenimiento.
+
+Para ejecutar las pruebas de estilo de codificación, usa:
+
+    npm run lint
+
+## Construido con 🛠️
+
+
+* [NestJS](https://nestjs.com/) - El framework utilizado para construir la aplicación.
+* [Docker](https://www.docker.com/) - Utilizado para contenerizar la aplicación y facilitar el despliegue.
+* [Docker Compose](https://docs.docker.com/compose/) - Herramienta para definir y ejecutar aplicaciones Docker multicontenedor.
+

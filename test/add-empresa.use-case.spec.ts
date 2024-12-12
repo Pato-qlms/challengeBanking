@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { EmpresaRepository } from '../../domain/repository/empresa.repository';
-import { AddEmpresaUseCase } from './add-empresa.use-case';
+import { EmpresaRepository } from '../src/domain/repository/empresa.repository';
+import { AddEmpresaUseCase } from '../src/application/use-cases/add-empresa.use-case';
 
 describe('AddEmpresaUseCase', () => {
   let addEmpresaUseCase: AddEmpresaUseCase;
