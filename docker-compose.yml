@@ -1,0 +1,14 @@
+
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "3000:3000" 
+    environment:
+      - MONGO_URI=mongodb+srv://test:testData@empresas.ed2p9.mongodb.net/?retryWrites=true&w=majority&appName=empresas
+    volumes:
+      - .:/app 
+      - /app/node_modules 
+    command: >
+      sh -c "npm run build && npm run start:prod"

@@ -5,7 +5,6 @@ import { AppModule} from "src/app.module"
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-    // Configuración de Swagger
     const config = new DocumentBuilder()
     .setTitle('Empresa Transferencias API')
     .setDescription('API para manejar empresas y transferencias')
