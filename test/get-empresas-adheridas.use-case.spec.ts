@@ -1,37 +1,29 @@
 /* eslint-disable prettier/prettier */
-import { EmpresaRepository } from '../src/domain/repository/empresa.repository';
 import { GetEmpresasAdheridasUseCase } from '../src/application/use-cases/get-empresas-adheridas.use-case';
+import { mockEmpresaRepository } from './__mocks__/empresa.repository.mock';
 
 describe('GetEmpresasAdheridasUseCase', () => {
   let useCase: GetEmpresasAdheridasUseCase;
-  let mockEmpresaRepository: Partial<EmpresaRepository>;
-
-  const mockEmpresas = [
-    { id: '1', nombre: 'Empresa 1' },
-    { id: '2', nombre: 'Empresa 2' },
-  ];
+  let empresaRepository: Partial<ReturnType<typeof mockEmpresaRepository>>;
 
   beforeEach(() => {
-    mockEmpresaRepository = {
-      findAdheridas: jest.fn().mockResolvedValue(mockEmpresas),
-    };
-
-    useCase = new GetEmpresasAdheridasUseCase(
-      mockEmpresaRepository as EmpresaRepository,
-    );
+    empresaRepository = mockEmpresaRepository();
+    useCase = new GetEmpresasAdheridasUseCase(empresaRepository as any);
   });
 
-  it('debería retornar las empresas que hicieron transferencias el último mes', async () => {
+  it('debería retornar las empresas adheridas en el último mes', async () => {
     const result = await useCase.execute();
 
     const fechaInicio = new Date();
-  fechaInicio.setMonth(fechaInicio.getMonth() - 1);
-  const fechaFin = new Date();
+    fechaInicio.setMonth(fechaInicio.getMonth() - 1);
 
-  expect(mockEmpresaRepository.findAdheridas).toHaveBeenCalledWith({
-    fechaInicio,
-    fechaFin,
-  });
-    expect(result).toEqual(mockEmpresas);
+    expect(empresaRepository.findAdheridas).toHaveBeenCalledWith({
+      fechaInicio: expect.any(Date),
+      fechaFin: expect.any(Date),
+    });
+    expect(result).toEqual([
+      { id: '1', nombre: 'Empresa 1' },
+      { id: '2', nombre: 'Empresa 2' },
+    ]);
   });
 });

@@ -1,22 +1,14 @@
 /* eslint-disable prettier/prettier */
-import { EmpresaRepository } from '../src/domain/repository/empresa.repository';
 import { AddEmpresaUseCase } from '../src/application/use-cases/add-empresa.use-case';
+import { mockEmpresaRepository } from './__mocks__/empresa.repository.mock';
 
 describe('AddEmpresaUseCase', () => {
   let addEmpresaUseCase: AddEmpresaUseCase;
-  let empresaRepository: Partial<EmpresaRepository>; 
+  let empresaRepository: Partial<ReturnType<typeof mockEmpresaRepository>>;
 
   beforeEach(() => {
-    empresaRepository = {
-      create: jest.fn().mockResolvedValue({
-        id: '123',
-        razonSocial: 'Empresa Test',
-        cuit: '20123456789',
-        fechaAdhesion: new Date(),
-      }),
-    };
-
-    addEmpresaUseCase = new AddEmpresaUseCase(empresaRepository as EmpresaRepository);
+    empresaRepository = mockEmpresaRepository();
+    addEmpresaUseCase = new AddEmpresaUseCase(empresaRepository as any);
   });
 
   it('debería agregar una nueva empresa correctamente', async () => {
@@ -28,12 +20,12 @@ describe('AddEmpresaUseCase', () => {
 
     const result = await addEmpresaUseCase.execute(empresa);
 
-    expect(empresaRepository.create).toHaveBeenCalledWith(empresa); 
+    expect(empresaRepository.create).toHaveBeenCalledWith(empresa);
     expect(result).toEqual({
       id: '123',
       razonSocial: 'Empresa Test',
       cuit: '20123456789',
       fechaAdhesion: expect.any(Date),
-    }); 
+    });
   });
 });

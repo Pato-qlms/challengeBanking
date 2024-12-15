@@ -18,7 +18,7 @@ describe('EmpresaController (e2e)', () => {
   });
 
   afterAll(async () => {
-    await app.close(); // Asegúrate de cerrar la aplicación
+    await app.close(); 
   });
 
   it('POST /empresas/adhesion: debería adherir una nueva empresa', async () => {

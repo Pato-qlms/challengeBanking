@@ -1,14 +1,12 @@
 /* eslint-disable prettier/prettier */
 
 import { Injectable } from '@nestjs/common';
-// import { EmpresaRepository } from '../../domain/repository/empresa.repository';
 import { TransferenciaRepository } from '../../domain/repository/transferencia.repository';
 
 @Injectable()
 export class GetEmpresasTransferenciasUseCase {
   constructor(
     private readonly transferenciaRepository: TransferenciaRepository,
-    //  private readonly empresaRepository: EmpresaRepository,
   ) {}
 
   async execute(): Promise<any[]> {
